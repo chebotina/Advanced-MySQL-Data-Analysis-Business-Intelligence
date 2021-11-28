@@ -17,4 +17,4 @@ Advanced SQL [Course](https://www.udemy.com/course/advanced-sql-mysql-for-analyt
 
 ## Case Study #1: Analyzing Traffic Sources 
 <img src="https://user-images.githubusercontent.com/78378801/137519315-3f13c0d0-fc2b-4f92-9a75-8e8a9d1f8f5b.jpg" alt="Image" width="700">
-My solution is [here]().
+My solution is [here](https://github.com/chebotina/Advanced-MySQL-Data-Analysis-Business-Intelligence/blob/main/Case%20Study%20%231:%20Analyzing%20Traffic%20Sources/Analyzing%20Traffic%20Sources%20Solution.md).
