@@ -194,11 +194,11 @@ First step - find min pageview id:
 CREATE TEMPORARY TABLE first_pgv_id
 SELECT
 	a.website_session_id,
-  MIN(website_pageview_id) AS first_pgv
+	MIN(website_pageview_id) AS first_pgv
 FROM website_pageviews AS a
 INNER JOIN website_sessions AS b
 ON a.website_session_id = b.website_session_id AND
-  b.created_at < '2012-06-14'
+	b.created_at < '2012-06-14'
 GROUP BY a.website_session_id;
 ````
 Second step - find the pageview_url of the first pageview id:
@@ -206,7 +206,7 @@ Second step - find the pageview_url of the first pageview id:
 CREATE TEMPORARY TABLE sessions_with_landing_page
 SELECT
 	first_pgv_id.website_session_id,
-    website_pageviews.pageview_url AS landing_page
+	website_pageviews.pageview_url AS landing_page
 FROM first_pgv_id
 LEFT JOIN website_pageviews
 ON first_pgv_id.first_pgv = website_pageviews.website_pageview_id;
@@ -216,8 +216,8 @@ Third step - find number of bounced session:
 CREATE TEMPORARY TABLE bounced_sessions
 SELECT
 	sessions_with_landing_page.website_session_id, 
-    sessions_with_landing_page.landing_page,
-    COUNT(website_pageviews.website_pageview_id) AS pages_viewed
+	sessions_with_landing_page.landing_page,
+	COUNT(website_pageviews.website_pageview_id) AS pages_viewed
 FROM sessions_with_landing_page
 LEFT JOIN website_pageviews
 ON sessions_with_landing_page.website_session_id = website_pageviews.website_session_id
@@ -231,8 +231,8 @@ Fourth step - count all and bounced sessions, calculate bounce rate:
 SELECT 
 	sessions_with_landing_page.landing_page,
 	COUNT(DISTINCT sessions_with_landing_page.website_session_id) AS sessions,
-  COUNT(DISTINCT bounced_sessions.website_session_id) AS bounced_sessions,
-  COUNT(DISTINCT bounced_sessions.website_session_id)/COUNT(DISTINCT sessions_with_landing_page.website_session_id) as bounce_rate
+	COUNT(DISTINCT bounced_sessions.website_session_id) AS bounced_sessions,
+	COUNT(DISTINCT bounced_sessions.website_session_id)/COUNT(DISTINCT sessions_with_landing_page.website_session_id) AS bounce_rate
 FROM sessions_with_landing_page
 LEFT JOIN bounced_sessions
 ON sessions_with_landing_page.website_session_id = bounced_sessions.website_session_id
