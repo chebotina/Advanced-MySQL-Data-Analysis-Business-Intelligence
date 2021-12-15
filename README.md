@@ -1,4 +1,4 @@
-# Advanced-MySQL-Data-Analysis-Business-Intelligence
+# Advanced MySQL Data Analysis Part-1
 Advanced SQL [Course](https://www.udemy.com/course/advanced-sql-mysql-for-analytics-business-intelligence/) from Maven Analytics
 
 ## Table of Contents
